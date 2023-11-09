@@ -21,8 +21,8 @@ class Database { // Работа с базой данных.
 
     bool connectionDataBase();                                                                                                          // Подключение к базе.
     bool createDataBase();                                                                                                                   // Создание базы данных.
-    bool write(const QString &data, const QByteArray &array, const float comparison_result); // Запись в базу данных.
-    bool read(QueryResult &queryResult);                                                                                         // Чтение из базы данных.
+    void write(const QString &data, const QByteArray &array, const float comparison_result); // Запись в базу данных.
+    void read(QueryResult &queryResult);                                                                                         // Чтение из базы данных.
 
  private:
     bool createTable();  // Запрос на создание таблицы.

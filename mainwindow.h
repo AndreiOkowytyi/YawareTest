@@ -40,7 +40,7 @@ class MainWindow : public QMainWindow {
 
  public slots:
     void screen();                                   // Реализация выполнения скриншота главного изображения.
-    void writeDatabase(float result);  // Запись в базу данных.
+    void writeDatabase(short result);  // Запись в базу данных.
     void creatTable();                            //  Создание таблицы исходя из данных что были получены из базу данных.
 };
 
@@ -51,6 +51,6 @@ class ComparisonImage : public QObject { // Класс для  сравнени�
     void comparison(const std::vector<QByteArray> &byteImage); // Реализация сравнения массива QByteArray.
 
  signals:
-     void resultComparison(float);
+     void resultComparison(short);
 };
 #endif // MAINWINDOW_H

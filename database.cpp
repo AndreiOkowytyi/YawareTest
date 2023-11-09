@@ -5,7 +5,7 @@ Database::~Database() {
     this->m_dataBase.close();
 }
 
-bool Database::write(const QString &data, const QByteArray &array, const float comparison_result) {
+void Database::write(const QString &data, const QByteArray &array, const float comparison_result) {
 
     QSqlQuery query;
 
@@ -21,11 +21,9 @@ bool Database::write(const QString &data, const QByteArray &array, const float c
     query.bindValue(":TABLE_RESULT" ,comparison_result);
 
     if(!query.exec()) qDebug() << query.lastError().text();
-
-    return true;
 }
 
-bool Database::read(QueryResult &queryResult) {
+void Database::read(QueryResult &queryResult) {
 
     QSqlQuery query;
 
@@ -41,7 +39,6 @@ bool Database::read(QueryResult &queryResult) {
                     query.value(2).toByteArray(),
                     query.value(3).toInt());
     }
-    return true;
 }
 
 bool Database::connectionDataBase() {

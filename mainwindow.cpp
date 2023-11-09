@@ -98,14 +98,14 @@ void MainWindow::screen() {
     std::thread thread([this](){
 
        auto p_Comparison = std::make_unique<ComparisonImage>();
-       QObject::connect(p_Comparison.get(), SIGNAL(resultComparison(float)), this, SLOT(writeDatabase(float)));
+       QObject::connect(p_Comparison.get(), SIGNAL(resultComparison(short)), this, SLOT(writeDatabase(short)));
        p_Comparison->comparison(this->m_v_ByteImage);
     } );
 
-    thread.detach();
+    thread.join();
 }
 
-void MainWindow::writeDatabase(float result) {
+void MainWindow::writeDatabase(short result) {
 
     this->p_ui->tableWidget->insertRow(0);
     this->p_ui->tableWidget->setItem(0 ,0, new QTableWidgetItem(QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss")));
